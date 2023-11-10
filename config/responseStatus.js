@@ -21,4 +21,10 @@ export const status = {
         code: "COMMON002",
         message: "요청한 페이지를 찾을 수 없습니다.",
     },
+    TEST_ERROR: {
+        status: StatusCodes.BAD_REQUEST,
+        isSuccess: false,
+        code: "COMMON003",
+        message: "테스트 에러입니돠.",
+    },
 }

@@ -14,3 +14,16 @@ export const CheckFlag = (flag) => {
         return flagResponseDTO(flag)
     }
 }
+
+export const asyncFnc = (flag) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (flag == 1) {
+                resolve("성공")
+            } else {
+                const err = new BaseError(status.TEST_ERROR)
+                reject(err)
+            }
+        }, 500)
+    })
+}
