@@ -27,4 +27,10 @@ export const status = {
         code: "COMMON003",
         message: "테스트 에러입니돠.",
     },
+    PARAMETER_IS_WRONG: {
+        status: StatusCodes.BAD_REQUEST,
+        isSuccess: false,
+        code: "COMMON004",
+        message: "유저 가입 테스트 에러입니돠.",
+    },
 }
