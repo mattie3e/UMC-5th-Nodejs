@@ -1,13 +1,16 @@
 import express from "express"
-import { tempRouter } from "./src/routes/tempRoute.js"
-import { userRouter } from "./src/routes/userRoute.js"
-import { response } from "./config/response.js"
-import { BaseError } from "./config/error.js"
-import { status } from "./config/responseStatus.js"
 import dotenv from "dotenv"
 import cors from "cors"
 import { specs } from "./config/swaggerConfig.js"
 import SwaggerUi from "swagger-ui-express"
+
+import { response } from "./config/response.js"
+import { BaseError } from "./config/error.js"
+import { status } from "./config/responseStatus.js"
+
+import { tempRouter } from "./src/routes/tempRoute.js"
+import { userRouter } from "./src/routes/userRoute.js"
+import { storeRoute } from "./src/routes/storeRoute.js"
 
 dotenv.config()
 
@@ -19,18 +22,12 @@ app.use(express.static("public"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-const myLogger = (req, res, next) => {
-    console.log("LOGGED")
-    next()
-}
-
-app.use(myLogger)
-
 //swagger
 app.use("/api-docs", SwaggerUi.serve, SwaggerUi.setup(specs))
 
 app.use("/temp", tempRouter)
 app.use("/user", userRouter)
+app.use("/stores", storeRoute)
 
 app.get("/", (req, res) => {
     console.log("/")
