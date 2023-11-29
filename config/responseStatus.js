@@ -33,4 +33,10 @@ export const status = {
         code: "COMMON004",
         message: "유저 가입 테스트 에러입니돠.",
     },
+    EMAIL_IS_REGISTERD: {
+        status: StatusCodes.BAD_REQUEST,
+        isSuccess: false,
+        code: "COMMON004",
+        message: "이미 등록된 이메일입니다.",
+    },
 }

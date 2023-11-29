@@ -22,10 +22,10 @@ export const joinUser = async (body) => {
     })
 
     if (joinUserData == -1) {
-        throw new BaseError(status.NOT_FOUND)
+        throw new BaseError(status.EMAIL_IS_REGISTERD)
     } else {
         for (let i = 0; i < prefer.length; i++) {
-            await setPrefer(joinUser, prefer[i])
+            await setPrefer(joinUserData, prefer[i])
         }
         return signinResponseDTO(
             await getUser(joinUserData),
