@@ -42,8 +42,6 @@ export const getUser = async (userId) => {
         const conn = await pool.getConnection()
         const [user] = await pool.query(getUserID, userId)
 
-        console.log(user)
-
         if (user.length == 0) {
             return -1
         }

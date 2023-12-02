@@ -36,13 +36,19 @@ export const status = {
     EMAIL_IS_REGISTERD: {
         status: StatusCodes.BAD_REQUEST,
         isSuccess: false,
-        code: "COMMON004",
+        code: "COMMON005",
         message: "이미 등록된 이메일입니다.",
     },
     STORE_IS_REGISTERED: {
         status: StatusCodes.BAD_REQUEST,
         isSuccess: false,
-        code: "COMMON004",
+        code: "COMMON006",
         message: "이미 등록된 가게입니다.",
+    },
+    STORE_IS_NOT_EXIST: {
+        status: StatusCodes.BAD_REQUEST,
+        isSuccess: false,
+        code: "COMMON007",
+        message: "존재하지 않는 가게입니다.",
     },
 }
