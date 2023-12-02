@@ -11,6 +11,7 @@ import { status } from "./config/responseStatus.js"
 import { tempRouter } from "./src/routes/tempRoute.js"
 import { userRouter } from "./src/routes/userRoute.js"
 import { storeRoute } from "./src/routes/storeRoute.js"
+import { missionRoute } from "./src/routes/missionRoute.js"
 
 dotenv.config()
 
@@ -28,6 +29,7 @@ app.use("/api-docs", SwaggerUi.serve, SwaggerUi.setup(specs))
 app.use("/temp", tempRouter)
 app.use("/user", userRouter)
 app.use("/stores", storeRoute)
+app.use("/missions", missionRoute)
 
 app.get("/", (req, res) => {
     console.log("/")

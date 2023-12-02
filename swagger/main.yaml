@@ -1,6 +1,7 @@
 tags:
     - name: User
     - name: Store
+    - name: Mission
 
 paths:
     /user/signin:
@@ -230,6 +231,102 @@ paths:
                               type: string
                               description: 내용
                               example: 맛있어요 강추~~~!!
+            responses:
+                "200":
+                    description: 회원 가입 성공!
+                    schema:
+                        type: object
+                        properties:
+                            status:
+                                type: integer
+                                example: 200
+                            isSuccess:
+                                type: boolean
+                                example: true
+                            code:
+                                type: integer
+                                example: 2000
+                            message:
+                                type: string
+                                example: "success!"
+                            data:
+                                type: object
+                                example:
+                                    {
+                                        "email": "swaggerTest@mail.com",
+                                        "name": "swagger",
+                                        "preferCategory": ["한식", "일식"],
+                                    }
+
+                "400":
+                    description: 잘못된 요청
+                    schema:
+                        type: object
+                        properties:
+                            status:
+                                type: integer
+                                example: 400
+                            isSuccess:
+                                type: boolean
+                                example: false
+                            code:
+                                type: integer
+                                example: COMMON001
+                            message:
+                                type: string
+                                example: 잘못된 요청입니다
+
+                "500":
+                    description: 서버 에러
+                    schema:
+                        type: object
+                        properties:
+                            status:
+                                type: integer
+                                example: 500
+                            isSuccess:
+                                type: boolean
+                                example: false
+                            code:
+                                type: integer
+                                example: COMMON000
+                            message:
+                                type: string
+                                example: 서버 에러, 관리자에게 문의 바랍니다.
+    /missions:
+        post:
+            tags:
+                - Mission
+            summary: 미션 추가
+            parameters:
+                - name: addReview
+                  in: body
+                  schema:
+                      properties:
+                          store_id:
+                              type: int
+                              description: 가게 아이디
+                              example: 2
+                          reward:
+                              type: int
+                              description: 보상 포인트
+                              example: 5
+                          content:
+                              type: string
+                              description: 내용
+                              example: 10,000원 이상의 식사 시
+                          deadlineYear:
+                              type: int
+                              description: 년
+                              example: 2024
+                          deadlineMonth:
+                              type: int
+                              description: 월
+                              example: 1
+                          deadlineDay:
+                              type: int
+                              description: 일
+                              example: 9
             responses:
                 "200":
                     description: 회원 가입 성공!

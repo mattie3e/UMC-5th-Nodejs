@@ -9,7 +9,7 @@ import {
 } from "../models/userDao.js"
 
 export const joinUser = async (body) => {
-    const birth = new Date(body.birthYear, body.birthMonth, body.birthDay)
+    const birth = new Date(body.birthYear, body.birthMonth - 1, body.birthDay)
     const prefer = body.prefer
 
     const joinUserData = await addUser({
