@@ -51,4 +51,10 @@ export const status = {
         code: "COMMON007",
         message: "존재하지 않는 가게입니다.",
     },
+    CHALLENGING_MISSION: {
+        status: StatusCodes.BAD_REQUEST,
+        isSuccess: false,
+        code: "COMMON008",
+        message: "이미 도전 중인 미션입니다.",
+    },
 }

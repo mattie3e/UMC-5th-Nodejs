@@ -1,8 +1,16 @@
 import { BaseError } from "../../config/error.js"
 import { status } from "../../config/responseStatus.js"
 
-import { addMissionResponseDTO } from "../dtos/missionDto.js"
-import { addMission, getMission } from "../models/missionDao.js"
+import {
+    addMissionResponseDTO,
+    tryMissionResponseDTO,
+} from "../dtos/missionDto.js"
+import {
+    addMission,
+    getMission,
+    getMissionStatus,
+    tryMission,
+} from "../models/missionDao.js"
 
 export const createMission = async (body) => {
     const deadline = new Date(
@@ -22,5 +30,18 @@ export const createMission = async (body) => {
         throw new BaseError(status.STORE_IS_NOT_EXIST)
     } else {
         return addMissionResponseDTO(await getMission(addMissionData))
+    }
+}
+
+export const startMission = async (body, flag) => {
+    const tryMissionData = await tryMission({
+        userId: body.user_id,
+        missionId: flag,
+    })
+
+    if (tryMissionData == -1) {
+        throw new BaseError(status.CHALLENGING_MISSION)
+    } else {
+        return tryMissionResponseDTO(await getMissionStatus(tryMissionData))
     }
 }
